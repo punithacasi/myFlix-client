@@ -18,8 +18,6 @@ export const MainView = () => {
 
 
     if (selectedMovie) {
-        console.log("VIEW");
-        console.log(selectedMovie);
         let similarMovies = movies.filter((movie) => {
             return movie.genre.name === selectedMovie.genre.name;
         })
