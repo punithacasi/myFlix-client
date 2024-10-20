@@ -27380,77 +27380,58 @@ var _react = require("react");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const url = "http://localhost:8080/movies";
+    const url = "https://my-movie-api-8xod.onrender.com/movies";
     const [movies, setMovies] = (0, _react.useState)([]);
-    console.log("tEST");
     (0, _react.useEffect)(()=>{
         fetch(url).then((response)=>response.json()).then((data)=>{
             console.log(data);
             setMovies(data);
         });
     });
-    // const [movies, setMovies] = useState([
-    //     {
-    //         "id": 1,
-    //         "title": "Inception",
-    //         "genre": {
-    //             "name": "Science Fiction",
-    //             "description": "Explores the concept of shared dreaming and the manipulation of dreams."
-    //         },
-    //         "image": "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg",
-    //         "director": "Christopher Nolan"
-    //     },
-    //     {
-    //         "id": 2,
-    //         "title": "The Shawshank Redemption",
-    //         "genre": {
-    //             "name": "Drama",
-    //             "description": "A story of hope and friendship set in a prison."
-    //         },
-    //         "image": "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
-    //         "director": "Frank Darabont"
-    //     },
-    //     {
-    //         "id": 3,
-    //         "title": "The Godfather",
-    //         "genre": {
-    //             "name": "Crime",
-    //             "description": "An epic tale of a mafia family and their power struggles."
-    //         },
-    //         "image": "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
-    //         "director": "Francis Ford Coppola"
-    //     },
-    //     {
-    //         "id": 4,
-    //         "title": "The Dark Knight",
-    //         "genre": {
-    //             "name": "Action",
-    //             "description": "Batman battles the Joker, a criminal mastermind who seeks to create chaos."
-    //         },
-    //         "image": "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg",
-    //         "director": "Christopher Nolan"
-    //     },
-    //     {
-    //         "id": 5,
-    //         "title": "Forrest Gump",
-    //         "genre": {
-    //             "name": "Drama",
-    //             "description": "The life journey of a man with a low IQ who influences several historical events."
-    //         },
-    //         "image": "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg",
-    //         "director": " Robert Zemeckis"
-    //     }
-    // ]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     if (selectedMovie) {
         console.log("VIEW");
         console.log(selectedMovie);
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-            movie: selectedMovie,
-            onBackClick: ()=>setSelectedMovie(null)
-        }, void 0, false, {
+        let similarMovies = movies.filter((movie)=>{
+            return movie.genre.name === selectedMovie.genre.name;
+        });
+        console.log(similarMovies);
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+                    movie: selectedMovie,
+                    onBackClick: ()=>setSelectedMovie(null)
+                }, void 0, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 29,
+                    columnNumber: 17
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 32,
+                    columnNumber: 17
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                    children: "Similar Movies"
+                }, void 0, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 33,
+                    columnNumber: 17
+                }, undefined),
+                similarMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                        movie: movie,
+                        onMovieClick: (newSelection)=>{
+                            setSelectedMovie(newSelection);
+                        }
+                    }, movie.id, false, {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 35,
+                        columnNumber: 21
+                    }, undefined))
+            ]
+        }, void 0, true, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 78,
+            lineNumber: 28,
             columnNumber: 13
         }, undefined);
     }
@@ -27458,7 +27439,7 @@ const MainView = ()=>{
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 85,
+        lineNumber: 48,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27469,12 +27450,12 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 91,
+                lineNumber: 54,
                 columnNumber: 17
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 89,
+        lineNumber: 52,
         columnNumber: 9
     }, undefined);
 };
