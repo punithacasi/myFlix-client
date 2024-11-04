@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 
 export const SignupView = () => {
     //const urlAPI = "http://localhost:8080";
@@ -22,7 +23,6 @@ export const SignupView = () => {
             lastName: lastname,
             birthDate: birthday
         };
-        console.log(data);
 
         fetch(urlAPI + "/users", {
             method: "POST",
@@ -41,63 +41,63 @@ export const SignupView = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
+        <Form onSubmit={handleSubmit}>
+            <Form.Label>
                 Username:
-                <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                    minLength="3"
-                />
-            </label>
-            <label>
+            </Form.Label>
+            <Form.Control
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                minLength="3"
+            />
+            <Form.Label>
                 Password:
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
+            </Form.Label>
+            <Form.Control
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+            />
+            <Form.Label>
                 First Name:
-                <input
-                    type="firstname"
-                    value={firstname}
-                    onChange={(e) => setFirstname(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
+            </Form.Label>
+            <Form.Control
+                type="firstname"
+                value={firstname}
+                onChange={(e) => setFirstname(e.target.value)}
+                required
+            />
+            <Form.Label>
                 Last Name:
-                <input
-                    type="lastname"
-                    value={lastname}
-                    onChange={(e) => setLastname(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
+            </Form.Label>
+            <Form.Control
+                type="lastname"
+                value={lastname}
+                onChange={(e) => setLastname(e.target.value)}
+                required
+            />
+            <Form.Label>
                 Email:
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
+            </Form.Label>
+            <Form.Control
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+            />
+            <Form.Label>
                 Birthday:
-                <input
-                    type="date"
-                    value={birthday}
-                    onChange={(e) => setBirthday(e.target.value)}
-                    required
-                />
-            </label>
-            <button type="submit">Submit</button>
-        </form>
+            </Form.Label>
+            <Form.Control
+                type="date"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
+                required
+            />
+            <Button variant="primary" type="submit">Submit</Button>
+        </Form>
     );
 };
