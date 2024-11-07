@@ -6,7 +6,7 @@ import { SignupView } from "../signup-view/signup-view";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-//import UserProfile from "../user-profile/user-profile";
+import UserProfile from "../user-profile/user-profile";
 
 
 export const MainView = () => {
@@ -18,7 +18,6 @@ export const MainView = () => {
     const urlAPI = "https://my-movie-api-8xod.onrender.com";
     //const urlAPI = "http://localhost:8080";
     const [movies, setMovies] = useState([]);
-    //const [favoriteMovies, setFavoriteMovies] = useState([]);
 
     useEffect(() => {
         if (!token) {
@@ -92,7 +91,7 @@ export const MainView = () => {
 
                         }
                     />
-                    {/* <Route
+                    <Route
                         path="/profile"
                         element={
                             <>
@@ -111,7 +110,7 @@ export const MainView = () => {
                             </>
 
                         }
-                    /> */}
+                    />
                     <Route
                         path="/movies/:movieId"
                         element={
