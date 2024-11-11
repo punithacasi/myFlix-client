@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-export const LoginView = ({ onLoggedIn }) => {
-    //const urlAPI = "http://localhost:8080";
-    const urlAPI = "https://my-movie-api-8xod.onrender.com";
+export const LoginView = ({ urlAPI, onLoggedIn }) => {
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
     const handleSubmit = (event) => {
@@ -23,6 +21,7 @@ export const LoginView = ({ onLoggedIn }) => {
         })
             .then((response) => response.json())
             .then((data) => {
+                console.log(data.user);
                 if (data.user) {
                     onLoggedIn(data.user, data.token);
                 } else {
